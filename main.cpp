@@ -32,6 +32,7 @@ for(j = n - 2; j > 0; j--){
     }
 }
 
+
 //moves minimum to the front
 void BubbleSort(int a[], int n){
     for(int i = 0; i < n; i++){
@@ -59,6 +60,7 @@ void ModifiedBubbleSort(int a[], int n){
 
     }
 }
+
 
 //switches minimum to the right position
 void SelectionSort(int a[], int n){
@@ -89,6 +91,41 @@ int max;
         int h = a[i];
         a[i] = a[max];
         a[max] = h;
+    }
+}
+
+//Quicksort
+void swap(int &a, int &b){
+int h = b;
+b = a;
+a = h;
+}
+
+void PreparePartition(int a[], int f, int l, int &p){
+//pivot-element
+int pivot = a[f];
+p = f-1;
+for(int i = f; i <= l; i++){
+    if(a[i] <= pivot)
+    {
+        p++;
+        swap(a[i], a[p]);
+    }
+}
+//Pivot to the right place
+swap(a[f], a[p]);
+printf("1: %d", p);
+
+}
+
+void QuickSort(int a[], int f, int l){
+int part;
+
+if(f<l){
+    PreparePartition(a, f, l, part);
+    printf("2: %d\n", part);
+    QuickSort(a, f, part-1);
+    QuickSort(a, part+1, l);
     }
 }
 
