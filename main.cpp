@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 //sorts through minimum
 void InsertionSort(int a[], int n){
@@ -124,6 +125,25 @@ int part;
 if(f<l){
     PreparePartition(a, f, l, part);
     printf("2: %d\n", part);
+    QuickSort(a, f, part-1);
+    QuickSort(a, part+1, l);
+    }
+}
+
+//selects random element and switches it to the first postition (->position of the pivot element)
+void RandomPivot(int a[], int f, int l){
+    srand(time(NULL));
+    int random = f + rand() % (l - f);
+
+    swap(a[random], a[f]);
+}
+
+void ModifiedQuickSort(int a[], int f, int l){
+int part;
+
+if(f<l){
+    RandomPivot(a, f, l);
+    PreparePartition(a, f, l, part);
     QuickSort(a, f, part-1);
     QuickSort(a, part+1, l);
     }
