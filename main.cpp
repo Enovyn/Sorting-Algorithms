@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 
+//regular iterative InsertionSort
 //sorts through minimum
 void InsertionSort(int a[], int n){
 int j, i, key;
@@ -30,6 +31,31 @@ for(j = n - 2; j > 0; j--){
         i++;
     }
     a[i - 1] = key;
+    }
+}
+
+//recursive InsertionSort
+void InsertionSortRecursive(int a[], int n){
+
+    if(n==1){       //ending condition for recursion
+        return;
+    }else{         
+    InsertionSortRecursive(a, n-1);      //if there are numbers left, take one away, sort the other ones
+    }
+
+//sort the number that was taken away into the now sorted array
+//regular sorting algorithm for InsertionSort, but without the while-loop which would iterate over all positions of the array
+int j, i, key;
+
+    for(j = 1; j < n; j++){
+    key = a[j];
+    i = j - 1;
+
+        while((i >= 0) && (a[i] > key)){
+            a[i + 1] = a[i];
+            i--;
+        }
+        a[i + 1] = key;
     }
 }
 
