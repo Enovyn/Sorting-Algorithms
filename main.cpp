@@ -141,8 +141,6 @@ for(int i = f; i <= l; i++){
 }
 //Pivot to the right place
 swap(a[f], a[p]);
-printf("1: %d", p);
-
 }
 
 void QuickSort(int a[], int f, int l){
@@ -150,7 +148,6 @@ int part;
 
 if(f<l){
     PreparePartition(a, f, l, part);
-    printf("2: %d\n", part);
     QuickSort(a, f, part-1);
     QuickSort(a, part+1, l);
     }
